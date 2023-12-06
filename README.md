@@ -16,14 +16,15 @@ password = "insert_your_password"
 (https://www.lionsclub-mettmann-wuelfrath.de/aktivitaeten/adventskalender_gewinnerlose.html)
 
 
-### send_mail.py
+## send_mail.py
 --> versendet die gescrapten daten aus der scraper.py in kobination mit der creds.py per email 
 --> erhalter können hier festegelegt werden
 
 # Nützliche Anleitungen
-crawler
+## crawler
 https://www.youtube.com/watch?v=xrYDlx8evR0
+
 https://www.youtube.com/watch?v=1PCWwK0AsE0&t=655s
 
-eMail
+## eMail
 https://stackoverflow.com/questions/71924634/sending-emails-using-python-smtplib-and-emailmessage
