@@ -5,6 +5,7 @@ gewinnspiel losnummern von der lions HP abziehen und per mail versenden - damit 
 # Setup
 creds.py 
 --> im main folder erstellen und die relevanten login credentials für google smtp als variablen hinterlegen:
+
 sender_email = "stephanskynet@gmail.com" --> insert your mail
 password = "insert_your_password"
 
