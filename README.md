@@ -3,17 +3,20 @@ wozu dient das ganze?
 gewinnspiel losnummern von der lions HP abziehen und per mail versenden - damit muss ich nicht immer die seite besuchen um zu checken ob ich gewonnen habe.
 
 # Setup
-creds.py 
+## creds.py 
 --> im main folder erstellen und die relevanten login credentials für google smtp als variablen hinterlegen:
 
 sender_email = "stephanskynet@gmail.com" --> insert your mail
+
 password = "insert_your_password"
 
-scraper.py
+
+## scraper.py
 --> find all tables on adventskalender_gewinnerlose @lionsclub-mettmann-wuelfrath.de
 (https://www.lionsclub-mettmann-wuelfrath.de/aktivitaeten/adventskalender_gewinnerlose.html)
 
-send_mail.py
+
+### send_mail.py
 --> versendet die gescrapten daten aus der scraper.py in kobination mit der creds.py per email 
 --> erhalter können hier festegelegt werden
 
