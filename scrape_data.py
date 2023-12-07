@@ -11,7 +11,7 @@ chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--headless')
 chrome_options.add_argument('--disable-dev-shm-usage') # use tmp and write to disk instead of use memory
 
-driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
 
 url = 'https://www.lionsclub-mettmann-wuelfrath.de/aktivitaeten/adventskalender_gewinnerlose.html'
 
