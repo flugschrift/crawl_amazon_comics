@@ -1,29 +1,32 @@
-import time
-
+import requests
 from bs4 import BeautifulSoup
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
 
-chrome_options = Options()
-chrome_options.add_argument('--no-sandbox')
-chrome_options.add_argument('--headless')
-chrome_options.add_argument('--disable-dev-shm-usage') # use tmp and write to disk instead of use memory
+url = "https://www.lionsclub-mettmann-wuelfrath.de/aktivitaeten/adventskalender_gewinnerlose.html"
 
-driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
+# Send a GET request to the URL
+response = requests.get(url)
 
-url = 'https://www.lionsclub-mettmann-wuelfrath.de/aktivitaeten/adventskalender_gewinnerlose.html'
+# Check if the request was successful (status code 200)
+if response.status_code == 200:
+    # Parse the HTML content using BeautifulSoup
+    soup = BeautifulSoup(response.text, 'html.parser')
 
-driver.get(url)
+    # Find the table with the desired information
+    table = soup.find('table', {'class': 'contenttable'})
 
-soup = BeautifulSoup(driver.page_source, 'lxml')
+    # Check if the table is found
+    if table:
+        # Extract data from the table
+        for row in table.find_all('tr')[1:]: # Skip the header row
+            columns = row.find_all('td')
+            
+            # Assuming the first column contains numbers and the second contains text
+            number = columns[0].text.strip()
+            text = columns[1].text.strip()
 
-tables = soup.find_all("div", {"class": "com-content-category-blog__items blog-items boxed"})
-
-for table in tables:
-    output_data = str(table.getText())
-
-#print(mail_input)
-
-driver.quit
+            # Print or store the extracted data as needed
+            print(f"Number: {number}, Text: {text}")
+    else:
+        print("Table not found on the page.")
+else:
+    print(f"Failed to retrieve the page. Status code: {response.status_code}")
